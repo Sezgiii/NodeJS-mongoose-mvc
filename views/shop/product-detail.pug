@@ -1,0 +1,26 @@
+extends ../layouts/main-layout.pug
+
+block styles 
+        link(rel="stylesheet" href="/style.css")
+
+block content
+
+    .row 
+        .col-md-3
+                img(src=`/resim/${product.image}` alt=`${product.description}`).img-fluid
+
+        .col-md-9.pl-3 
+            h1.mb-3 #{product.name}
+            hr
+            a(href="").btn.btn-link.p-0.mb-3 Telefon 
+            .mb-3
+                h4.text-primary.mb-3 #{product.price} TL
+                    form(action='/cart' method='POST')
+                        input(type='hidden' name='_csrf' value=`${csrfToken}`) 
+                        input(type='hidden' name='productId' value=`${product._id}`)
+                        hr
+                        button(type='submit').btn.btn-primary.btn-sm Add to Cart    
+    .row 
+        .col-md-12 
+            hr
+            p.p-3 !{product.description}

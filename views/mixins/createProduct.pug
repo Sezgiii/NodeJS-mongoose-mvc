@@ -1,0 +1,19 @@
+mixin createProduct(product)
+    .col-md-4
+        .card.m-2
+            img(src=`/resim/${product.image}` alt=`${product.description}` height="350").card-img-top
+
+            .card-body
+                h4.card-title
+                    a(href=`/products/${product._id}`) #{product.name}  
+               
+                small.text-muted
+                     i.fa.fa-try.text-warning.h5 #{product.price} TL
+                .card-footer.text-center
+                    
+                    a(href=`/products/${product._id}`).btn.btn-primary.btn-sm.m-1 Details
+
+                    form(action='/cart' method='POST')
+                        input(type='hidden' name='_csrf' value=`${csrfToken}`) 
+                        input(type='hidden' name='productId' value=`${product._id}`)
+                        button(type='submit').btn.btn-primary.btn-sm.ml-1 Add to Cart    

@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+            .container
+                    a(href="/home").navbar-brand Shopping
+                    ul.nav.navbar-nav.mr-auto
+                        li.nav-item
+                            a(href="/home", class=(path === '/home' ? 'nav-link active' : 'nav-link')) Home
+                        li.nav-item
+                            a(href="/products", class=(path === '/products' ? 'nav-link active' : 'nav-link')) Products
+                        if isAuthenticated
+                            li.nav-item
+                                a(href="/cart", class=(path === '/cart' ? 'nav-link active' : 'nav-link')) Cart
+                            li.nav-item
+                                a(href="/orders", class=(path === '/orders' ? 'nav-link active' : 'nav-link')) Orders    
+                        if isAdmin            
+                            li.nav-item
+                                a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'nav-link active' : 'nav-link')) Add Product
+                            li.nav-item
+                                a(href="/admin/products", class=(path === '/admin/products' ? 'nav-link active' : 'nav-link')) Admin Products
+                            li.nav-item
+                                a(href="/admin/add-category", class=(path === '/admin/add-category' ? 'nav-link active' : 'nav-link')) Add Category
+                            li.nav-item
+                                a(href="/admin/categories", class=(path === '/admin/categories' ? 'nav-link active' : 'nav-link')) Categories   
+                    ul.nav.navbar-nav.ml-auto
+                        if isAuthenticated
+                            li.nav-item
+                                a(href="/logout").nav-link Logout
+                        else
+                            li.nav-item
+                                a(href="/login").nav-link Login
+                            li.nav-item
+                                a(href="/register").nav-link Register
